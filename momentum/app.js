@@ -2,44 +2,13 @@ const h1 = document.querySelector(".title:first-child h1");
 
 
 function handleTitleClick() {
-  h1.style.color = "blue";
+  const clickedClass = "click";
+  if(h1.classList.contains(clickedClass)){
+    h1.classList.remove(clickedClass);
+  } else {
+    h1.classList.add(clickedClass);
+  }
 }
-
-function MouseEnter(){
-  h1.innerText = "Mouse is here!";
-}
-
-function MouseLeave(){
-  h1.innerText = "Mouse is gone!";
-}
-
-function handleResizeWindow(){
-  document.body.style.backgroundColor = "tomato";
-}
-
-function handleWindowCopy() {
-  alert("copier");
-}
-
-function handleWindowPaste(){
-  alert("paste");
-}
-
-function handleWindowOffline(){
-  alert("SOS no WIFI");
-}
-
-function handleWindowOnline() {
-  alert("ALL GOOD");
-}
+//h1에 class name을 지정해주는 코드 console창에서 확인할 수 있다.
 
 h1.addEventListener("click", handleTitleClick);
-h1.addEventListener("mouseenter", MouseEnter);
-h1.addEventListener("mouseleave", MouseLeave);
-
-
-window.addEventListener("resize", handleResizeWindow);
-window.addEventListener("copy", handleWindowCopy);
-window.addEventListener("paste", handleWindowPaste);
-window.addEventListener("offline", handleWindowOffline);
-window.addEventListener("online", handleWindowOnline);
