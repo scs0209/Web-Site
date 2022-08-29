@@ -2,13 +2,8 @@ const h1 = document.querySelector(".title:first-child h1");
 
 
 function handleTitleClick() {
-  const clickedClass = "click";
-  if(h1.classList.contains(clickedClass)){
-    h1.classList.remove(clickedClass);
-  } else {
-    h1.classList.add(clickedClass);
-  }
+  h1.classList.toggle("clicked");
 }
-//h1에 class name을 지정해주는 코드 console창에서 확인할 수 있다.
+//이전 버전보다 더 쉽게 코드를 수정한 버전
 
 h1.addEventListener("click", handleTitleClick);
