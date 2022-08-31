@@ -10,14 +10,16 @@ function onLogInSubmit(event){
   loginForm.classList.add(HIDDEN_CLASSNAME);
   const username = loginInput.value;
   localStorage.setItem("USERNAME_KEY", username)//local storage에 username을 saving 하는 코드
-  greeting.innerText = `Hello ${username}`;//"Hello " + username;와 같은 뜻 사용하고 싶은걸로 사용하면 된다.
-  greeting.classList.remove(HIDDEN_CLASSNAME);
+  paintGreetings(username);
 }
 
 loginForm.addEventListener("submit", onLogInSubmit);
 
 
-
+function paintGreetings (username) {
+  greeting.innerText = `Hello ${username}`;
+  greeting.classList.remove(HIDDEN_CLASSNAME);
+}
 const savedUsername = localStorage.getItem("USERNAME_KEY");
 
 if(savedUsername === null) {
@@ -26,6 +28,5 @@ if(savedUsername === null) {
   loginForm.addEventListener("submit", onLogInSubmit);
 } else {
   //show the greetings
-  greeting.innerText = `Hello ${savedUsername}`;
-  greeting.classList.remove(HIDDEN_CLASSNAME);
+  paintGreetings(savedUsername);
 }
