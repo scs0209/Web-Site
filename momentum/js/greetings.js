@@ -2,6 +2,7 @@ const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
 
+
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username"; //username이 반복되므로 변수를 선언해줘서 값도 쉽게 변경하고 오타가 나도 알기 쉽게 해준다.
 
