@@ -4,11 +4,13 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
 
+const TODOS_KEY = "todos";
+
 const toDos = []; // (todo)에 들어오는 텍스트를 배열로 묶어 보관하기 위해 빈 array를 생성해준다.
 
 function saveToDos () {
   //JSON.stringify는 array자체를 문자열로 만들어준다.(localstorage에서 배열 형태로 저장됨.)
-  localStorage.setItem("todos", JSON.stringify(toDos));
+  localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
 
 
@@ -19,7 +21,7 @@ function deleteToDo(event) {
 }
 
 
-//그리는 것을 담당
+//화면에 (표시)그리는 것을 담당
 function paintToDo(newTodo) {
   const li = document.createElement("li");
   const span = document.createElement("span");
@@ -44,4 +46,24 @@ function handleToDoSubmit(event){
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
 
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
+if(savedToDos !== null) {
+  const parsedToDos = JSON.parse(savedToDos);
+  console.log(parsedToDos);
+  parsedToDos.forEach((item) => console.log("this is the turn of ", item));
+}
+//item = 우리가 보내고 싶은 텍스트 ex)a, b, c, d...
+//savedToDos에 있는 string을 parsedToDos에 불러와서 array형태로 변경한다.
+//JS는 배열안에 있는 각각의 item에 대해 function을 실행할 수 있게 해준다.
+
+
 //localStorage는 배열은 저장 x 오직 텍스트만 저장 가능
+//JSON.parse는 string을 JS가 이해할 수 있는 살아있는 array로 만든다
+/*
+function sayHello(item) {
+  console.log("this is the turn of ", item);
+}
+= (item) => console.log("this is the turn of ", item)
+이 두 코드는 같은 의미이다.
+*/
