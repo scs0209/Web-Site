@@ -6,7 +6,7 @@ const toDoList = document.getElementById("todo-list");
 
 const TODOS_KEY = "todos";
 
-const toDos = []; // (todo)에 들어오는 텍스트를 배열로 묶어 보관하기 위해 빈 array를 생성해준다.
+let toDos = []; // (todo)에 들어오는 텍스트를 배열로 묶어 보관하기 위해 빈 array를 생성해준다.
 
 function saveToDos () {
   //JSON.stringify는 array자체를 문자열로 만들어준다.(localstorage에서 배열 형태로 저장됨.)
@@ -50,10 +50,10 @@ const savedToDos = localStorage.getItem(TODOS_KEY);
 
 if(savedToDos !== null) {
   const parsedToDos = JSON.parse(savedToDos);
-  console.log(parsedToDos);
-  parsedToDos.forEach((item) => console.log("this is the turn of ", item));
+  toDos = parsedToDos;
+  parsedToDos.forEach(paintToDo);
 }
-//item = 우리가 보내고 싶은 텍스트 ex)a, b, c, d...
+
 //savedToDos에 있는 string을 parsedToDos에 불러와서 array형태로 변경한다.
 //JS는 배열안에 있는 각각의 item에 대해 function을 실행할 수 있게 해준다.
 
@@ -67,3 +67,6 @@ function sayHello(item) {
 = (item) => console.log("this is the turn of ", item)
 이 두 코드는 같은 의미이다.
 */
+
+//(todo)를 submit 할 때마다 newTodo를 빈 array였던 toDos array에 push를 함 그리고 여기에서 saveToDos()를 호출하고 그러면 빈 array 였다가 이제는 "a"하나만 갖고 있는 array를 저장하는 거임
+//그렇지만 우기ㅏ 원하는건 이전 toDo들을 복원하는 것이다. 그래서 toDos array를 가지고 와서 toDos array에 복원해주었다.
